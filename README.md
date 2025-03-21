@@ -1,6 +1,6 @@
-# 🗳️ Blockchain Voting Smart Contract
+# 🏳️‍🌟 Blockchain Voting Smart Contract
 
-Este repositório contém o contrato inteligente para um sistema de votação descentralizado na rede Polygon, garantindo segurança, transparência e anonimato dos votos.
+Este repositório contém o contrato inteligente para um sistema de **votação descentralizado** na **rede Polygon**, garantindo **segurança, transparência e anonimato** dos votos.
 
 ## 📌 Tecnologias Utilizadas
 
@@ -8,62 +8,77 @@ Este repositório contém o contrato inteligente para um sistema de votação de
 - **Hardhat** - Framework para desenvolvimento, testes e implantação de contratos
 - **Ethers.js** - Biblioteca para interação com contratos inteligentes
 - **OpenZeppelin** - Conjunto de bibliotecas para contratos seguros e reutilizáveis
-- **Polygon** - Blockchain utilizada para registrar os votos
+- **Polygon (Amoy Testnet)** - Blockchain utilizada para registrar os votos
 
-## 📁 Estrutura do Projeto
+---
+
+## 💁️🏻 Estrutura do Projeto
 
 ```
 📂 voting-contract
-├── 📂 contracts          # Diretório dos contratos inteligentes
-│   ├── Voting.sol       # Contrato principal de votação
-│   ├── Token.sol        # Contrato do token de votação
-│   ├── interfaces       # Interfaces para contratos
-├── 📂 scripts           # Scripts para implantação e interação
-│   ├── deploy.js       # Script de deploy dos contratos
-├── 📂 test              # Testes unitários dos contratos
-│   ├── Voting.test.js  # Testes para o contrato de votação
-├── hardhat.config.js    # Configuração do Hardhat
-├── package.json         # Dependências do projeto
-└── README.md            # Documentação do repositório
+👉📂 contracts          # Diretório dos contratos inteligentes
+👉👉📂 Voting.sol       # Contrato principal de votação
+👉📂 scripts           # Scripts para implantação e interação
+👉👉📂 deploy.ts       # Script de deploy dos contratos
+👉📂 test              # Testes unitários dos contratos
+👉👉📂 Voting.test.ts  # Testes para o contrato de votação
+👉 hardhat.config.ts    # Configuração do Hardhat
+👉 package.json         # Dependências do projeto
+👉 tsconfig.json        # Configuração do TypeScript
+👉 README.md            # Documentação do repositório
 ```
+
+---
 
 ## 🚀 Como Configurar o Projeto
 
-1. Clone o repositório:
-   ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
-   ```
-2. Instale as dependências:
-   ```sh
-   npm install
-   ```
-3. Configure as variáveis de ambiente criando um arquivo `.env`:
-   ```env
-   PRIVATE_KEY=your-wallet-private-key
-   INFURA_API_KEY=your-infura-api-key
-   ```
-4. Compile os contratos:
-   ```sh
-   npx hardhat compile
-   ```
-5. Execute os testes:
-   ```sh
-   npx hardhat test
-   ```
-6. Faça o deploy na rede Polygon:
-   ```sh
-   npx hardhat run scripts/deploy.js --network polygon
-   ```
+### **1️⃣ Clonar o Repositório**
+```sh
+git clone https://github.com/GabrielFAlves/TrustVote-Contract.git
+cd TrustVote-Contract
+```
+
+### **2️⃣ Instalar as Dependências**
+```sh
+npm install
+```
+
+### **3️⃣ Configurar as Variáveis de Ambiente**
+Crie um arquivo `.env` e adicione suas chaves:
+```env
+PRIVATE_KEY=SUA_CHAVE_PRIVADA_DA_METAMASK
+POLYGON_AMOY_RPC=https://polygon-amoy.g.alchemy.com/v2/SUA_ALCHEMY_KEY
+```
+📈 **IMPORTANTE**: Mumbai Testnet foi descontinuada. Agora usamos **Amoy Testnet** via **Alchemy**.
+
+### **4️⃣ Compilar os Contratos**
+```sh
+npx hardhat compile
+```
+
+### **5️⃣ Executar os Testes**
+```sh
+npx hardhat test
+```
+
+### **6️⃣ Fazer o Deploy na Rede Polygon (Amoy Testnet)**
+```sh
+npx hardhat run scripts/deploy.ts --network amoy
+```
+
+---
 
 ## 🛠️ Funcionalidades do Contrato
 
-- Registro de uma nova eleição
-- Cadastro de candidatos elegíveis
-- Registro de votos anônimos utilizando ZKP
-- Restrição para que cada CPF possa votar apenas uma vez
-- Auditoria transparente dos votos sem expor informações pessoais
+🔹 Registro de uma nova eleição.  
+🔹 Cadastro de candidatos elegíveis.  
+🔹 Registro de votos anônimos (com possível implementação de ZKP).  
+🔹 Restrição para que **cada CPF possa votar apenas uma vez**.  
+🔹 Auditoria pública dos votos sem expor informações pessoais.  
 
-## 📜 Licença
+---
+
+## 💚 Licença
 
 Este projeto é licenciado sob a **MIT License**.
+
