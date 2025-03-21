@@ -9,7 +9,7 @@ contract Voting {
 
     address public admin;
     mapping(uint256 => Candidate) public candidates;
-    mapping(bytes32 => bool) public usedTokens; // Armazena tokens de voto usados
+    mapping(bytes32 => bool) public usedTokens;
     uint256 public candidatesCount;
 
     event Voted(bytes32 indexed voteToken, uint256 candidateId);
@@ -33,7 +33,7 @@ contract Voting {
         require(_candidateId < candidatesCount, "Candidato invalido");
 
         candidates[_candidateId].voteCount++;
-        usedTokens[voteToken] = true; // Marca o token como usado
+        usedTokens[voteToken] = true;
 
         emit Voted(voteToken, _candidateId);
     }

@@ -4,7 +4,6 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contract with the account:", deployer.address);
 
-  // Deploy Voting Contract (Agora sem Token.sol)
   const Voting = await ethers.getContractFactory("Voting");
   const voting = await Voting.deploy();
   await voting.waitForDeployment();
