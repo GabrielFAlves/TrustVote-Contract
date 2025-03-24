@@ -16,16 +16,16 @@ Este repositório contém o contrato inteligente para um sistema de **votação 
 
 ```
 📂 voting-contract
-👉📂 contracts          # Diretório dos contratos inteligentes
-👉👉📂 Voting.sol       # Contrato principal de votação
-👉📂 scripts           # Scripts para implantação e interação
-👉👉📂 deploy.ts       # Script de deploy dos contratos
-👉📂 test              # Testes unitários dos contratos
-👉👉📂 Voting.test.ts  # Testes para o contrato de votação
-👉 hardhat.config.ts    # Configuração do Hardhat
-👉 package.json         # Dependências do projeto
-👉 tsconfig.json        # Configuração do TypeScript
-👉 README.md            # Documentação do repositório
+👉📂 contracts            # Diretório dos contratos inteligentes
+👉👉📂 Voting.sol         # Contrato principal de votação com verificação de assinatura
+👉📂 scripts             # Scripts para implantação e interação
+👉👉📂 deploy.ts         # Script de deploy dos contratos
+👉📂 test                # Testes unitários dos contratos
+👉👉📂 Voting.test.ts    # Testes com validações completas de segurança
+👉 hardhat.config.ts      # Configuração do Hardhat
+👉 package.json           # Dependências do projeto
+👉 tsconfig.json          # Configuração do TypeScript
+👉 README.md              # Documentação do repositório
 ```
 
 ---
@@ -44,10 +44,11 @@ npm install
 ```
 
 ### **3️⃣ Configurar as Variáveis de Ambiente**
-Crie um arquivo `.env` e adicione suas chaves:
+Crie um arquivo `.env` na raiz e adicione:
 ```env
-PRIVATE_KEY=SUA_CHAVE_PRIVADA_DA_METAMASK
+PRIVATE_KEY=SUA_CHAVE_PRIVADA_DA_METAMASK (usada no deploy)
 POLYGON_AMOY_RPC=https://polygon-amoy.g.alchemy.com/v2/SUA_ALCHEMY_KEY
+BACKEND_SIGNER=0xEndereçoDaCarteiraDoBackend
 ```
 📈 **IMPORTANTE**: Mumbai Testnet foi descontinuada. Agora usamos **Amoy Testnet** via **Alchemy**.
 
@@ -56,7 +57,7 @@ POLYGON_AMOY_RPC=https://polygon-amoy.g.alchemy.com/v2/SUA_ALCHEMY_KEY
 npx hardhat compile
 ```
 
-### **5️⃣ Executar os Testes**
+### **5️⃣ Executar os Testes (Cobrem todos os cenários de segurança)**
 ```sh
 npx hardhat test
 ```
@@ -70,11 +71,11 @@ npx hardhat run scripts/deploy.ts --network amoy
 
 ## 🛠️ Funcionalidades do Contrato
 
-🔹 Registro de uma nova eleição.  
-🔹 Cadastro de candidatos elegíveis.  
-🔹 Registro de votos anônimos (com possível implementação de ZKP).  
-🔹 Restrição para que **cada CPF possa votar apenas uma vez**.  
-🔹 Auditoria pública dos votos sem expor informações pessoais.  
+🔐 **Verificação de assinatura** para garantir que somente o backend possa autorizar votos e candidatos.  
+🗳️ Cada endereço só pode votar **uma única vez**.  
+🧾 Cadastro de candidatos protegido com **assinatura autorizada do backend**.  
+📊 Consulta pública e transparente da lista de candidatos e resultados.  
+🚫 Bloqueio de assinaturas inválidas e tentativas duplicadas.  
 
 ---
 
